@@ -33,8 +33,8 @@ public class TextBoxTest {
             $(".react-datepicker__year-select").selectOption("2022");
             $(".react-datepicker__month-select").selectOption("July");
             $(".react-datepicker__day--009").click();
-            $(".subjectsInput").setValue("M");
-            $x("//div[contains(text(),'Maths')]").click();
+            $(".subjects-auto-complete__value-container").click();
+            $("#subjectsInput").setValue("Maths").pressEnter();
             $(byText("Sports")).parent().click();
             $(byText("Music")).parent().click();
             $("#uploadPicture").uploadFile(new File("student.jpg"));
@@ -43,7 +43,7 @@ public class TextBoxTest {
             $x("//div[contains(text(),'NCR')]").click();
             $x("//div[@id='city']").click();
             $x("//div[contains(text(),'Delhi')]").click();
-
+            $("#submit").click();
 
 
             // проверки
@@ -52,10 +52,12 @@ public class TextBoxTest {
             $(".modal-body").shouldHave(text("Female"));
             $(".modal-body").shouldHave(text("89991234567"));
             $(".modal-body").shouldHave(text("9 July,2022"));
-           // $(".modal-body").shouldHave(text("Maths"));
+            $(".modal-body").shouldHave(text("Maths"));
             $(".modal-body").shouldHave(text("Sports, Music"));
             $("#uploadPicture").parent().shouldHave(text("student.jpg"));
-            $(".modal-body").shouldHave(text("Dasha Tsareva"));
+            $(".modal-body").shouldHave(text("City"));
+            $(".modal-body").shouldHave(text("NCS Delhi"));
+
 
 
 

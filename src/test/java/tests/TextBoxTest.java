@@ -17,8 +17,6 @@ public class TextBoxTest {
             Configuration.browserSize = "1920x1080";
             Configuration.baseUrl = "https://demoqa.com";
             Configuration.pageLoadStrategy = "eager";
-            Configuration.holdBrowserOpen = true;
-            Configuration.timeout = 5000;
         }
 
         @Test
@@ -37,7 +35,7 @@ public class TextBoxTest {
             $("#subjectsInput").setValue("Maths").pressEnter();
             $(byText("Sports")).parent().click();
             $(byText("Music")).parent().click();
-            $("#uploadPicture").uploadFile(new File("student.jpg"));
+            $("#uploadPicture").uploadFromClasspath("images/student.jpg");
             $("#currentAddress").setValue("City");
             $x("//div[@id='state']").click();
             $x("//div[contains(text(),'NCR')]").click();
@@ -45,8 +43,7 @@ public class TextBoxTest {
             $x("//div[contains(text(),'Delhi')]").click();
             $("#submit").click();
 
-
-            // проверки
+            // Проверки
             $(".modal-body").shouldHave(text("Dasha Tsareva"));
             $(".modal-body").shouldHave(text("dasha55@mail.ru"));
             $(".modal-body").shouldHave(text("Female"));
@@ -57,11 +54,6 @@ public class TextBoxTest {
             $("#uploadPicture").parent().shouldHave(text("student.jpg"));
             $(".modal-body").shouldHave(text("City"));
             $(".modal-body").shouldHave(text("NCS Delhi"));
-
-
-
-
-
         }
     }
 
